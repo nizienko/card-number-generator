@@ -50,7 +50,7 @@ public class Core {
             Integer i;
             Integer sum = 0;
             Integer n;
-            Integer lastD = 0;
+            Integer checkSum = 0;
             String cardNumber = "";
             for (i = 1; i < countDigest; i++){
                 if (i > bin.length()) {
@@ -77,16 +77,16 @@ public class Core {
                 }
                 sum = sum + n;
                 if (sum % 10 != 0) {
-                    lastD = 10 - sum % 10;
+                    checkSum = 10 - sum % 10;
                 }
 
-                //          cardNumber = cardNumber + lastD;
+                         cardNumber = cardNumber + checkSum;
             }
-            gui.printCard(cardNumber + lastD);
-            gui.addCardNumber(cardNumber + lastD);
+            gui.printCard(cardNumber);
+            gui.addCardNumber(cardNumber);
             Toolkit toolkit = Toolkit.getDefaultToolkit();
             Clipboard clipboard = toolkit.getSystemClipboard();
-            StringSelection strSel = new StringSelection(cardNumber + lastD);
+            StringSelection strSel = new StringSelection(cardNumber);
             clipboard.setContents(strSel, null);
         }
     }
