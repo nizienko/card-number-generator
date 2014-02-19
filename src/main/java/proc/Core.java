@@ -76,21 +76,25 @@ public class Core {
                     }
                 }
                 sum = sum + n;
-                if (sum % 10 != 0) {
-                    checkSum = 10 - sum % 10;
-                }
 
-                         cardNumber = cardNumber + checkSum;
             }
+            if (sum % 10 != 0) {
+                checkSum = 10 - sum % 10;
+            }
+            cardNumber = cardNumber + checkSum;
             gui.printCard(cardNumber);
             gui.addCardNumber(cardNumber);
-            Toolkit toolkit = Toolkit.getDefaultToolkit();
-            Clipboard clipboard = toolkit.getSystemClipboard();
-            StringSelection strSel = new StringSelection(cardNumber);
-            clipboard.setContents(strSel, null);
+            copyToClipboard(cardNumber);
         }
     }
     private static boolean isChet(Integer n){
-        return (n%2)==0?true:false;
+        return (n % 2) == 0;
+    }
+
+    private static void copyToClipboard(String cardNumber){
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
+        Clipboard clipboard = toolkit.getSystemClipboard();
+        StringSelection strSel = new StringSelection(cardNumber);
+        clipboard.setContents(strSel, null);
     }
 }

@@ -20,7 +20,7 @@ public class Gui extends JFrame {
     private JTextField digCount;
     private JTextField bankCard;
     private JTextArea historyText;
-    private JComboBox bin;
+    private JComboBox<String> bin;
     private MyButton generate;
     private MyButton show;
 
@@ -36,7 +36,7 @@ public class Gui extends JFrame {
         JScrollPane scrollV = new JScrollPane (historyText);
         scrollV.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         cardBins = vars.getCardBins();
-        bin = new JComboBox(cardBins);
+        bin = new JComboBox<String>(cardBins);
         bin.setEditable(true);
         bankCard = new JTextField("");
         generate = new MyButton(generateAction, "generate & copy");
@@ -62,7 +62,7 @@ public class Gui extends JFrame {
         this.setContentPane(mainPanel);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         history.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        this.setPreferredSize(new Dimension(190, 100));
+        this.setPreferredSize(new Dimension(250, 100));
         history.setPreferredSize(new Dimension(170, 300));
         this.pack();
         history.pack();
@@ -105,7 +105,7 @@ public class Gui extends JFrame {
             Integer.parseInt(bin);
             return true;
         }
-        catch (Exception e){
+        catch (NumberFormatException e){
             return false;
         }
     }
@@ -115,6 +115,7 @@ public class Gui extends JFrame {
         }
         else {
             history.setVisible(true);
+            history.setLocation(this.getLocation().x + 251, this.getLocation().y);
         }
     }
     public void addCardNumber(String card){
