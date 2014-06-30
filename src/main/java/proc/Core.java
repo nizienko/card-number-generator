@@ -65,7 +65,7 @@ public class Core {
                     }
                 }
                 cardNumber = cardNumber + n;
-                if (!isChet(i)) {
+                if (!isOdd(countDigest-i)) {
                     n = n * 2;
                     if (n >= 10) {
                         Integer sumN = 0;
@@ -87,7 +87,7 @@ public class Core {
             copyToClipboard(cardNumber);
         }
     }
-    private static boolean isChet(Integer n){
+    private static boolean isOdd(Integer n){
         return (n % 2) == 0;
     }
 

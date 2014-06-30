@@ -102,7 +102,9 @@ public class Gui extends JFrame {
 
     private Boolean checkBin(String bin){
         try {
-            Integer.parseInt(bin);
+            for (int i=0; i < bin.length(); i++){
+                Integer.parseInt(bin.substring(i, i+1));
+            }
             return true;
         }
         catch (NumberFormatException e){
